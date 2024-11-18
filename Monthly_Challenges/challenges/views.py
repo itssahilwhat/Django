@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.urls import reverse
 
 
 monthly_challenges = {
@@ -18,58 +19,6 @@ monthly_challenges = {
 }
 
 
-def index(request):
-    return HttpResponse('This works!')
-
-
-def january(request):
-    return HttpResponse('Eat no meat for the entire month')
-
-
-def february(request):
-    return HttpResponse('Walk for at least 20 minutes every day')
-
-
-def march(request):
-    return HttpResponse('Learn Django for at least 20 minutes every day')
-
-
-def april(request):
-    return HttpResponse('April challenge')
-
-
-def may(request):
-    return HttpResponse('May challenge')
-
-
-def june(request):
-    return HttpResponse('June challenge')
-
-
-def july(request):
-    return HttpResponse('July challenge')
-
-
-def august(request):
-    return HttpResponse('August challenge')
-
-
-def september(request):
-    return HttpResponse('September challenge')
-
-
-def october(request):
-    return HttpResponse('October challenge')
-
-
-def november(request):
-    return HttpResponse('November challenge')
-
-
-def december(request):
-    return HttpResponse('December challenge')
-
-
 def monthly_challenge_by_number(request, month):
     months = list(monthly_challenges.keys())
 
@@ -77,12 +26,14 @@ def monthly_challenge_by_number(request, month):
         return HttpResponseNotFound('Invalid month')
 
     redirect_month = months[month - 1]
-    return HttpResponse(f"Redirecting to {redirect_month} challenge")
+    redirect_path = reverse("month-challenge", args=[redirect_month])  # /challenge/january
+    return HttpResponseRedirect(redirect_path)
 
 
 def monthly_challenge(request, month):
     try:
         challenge_text = monthly_challenges[month]
+        response_data = f"<h1>{challenge_text}</h1>"
         return HttpResponse(challenge_text)
     except:
         return HttpResponseNotFound('This month is not supported!')

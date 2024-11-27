@@ -15,7 +15,7 @@ monthly_challenges = {
     "september": "No sugar for the entire month",
     "october": "No alcohol for the entire month",
     "november": "No junk food for the entire month",
-    "december": "No TV for the entire month"
+    "december": None
 }
 
 

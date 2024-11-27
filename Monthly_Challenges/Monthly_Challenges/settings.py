@@ -57,6 +57,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             # BASE_DIR / 'challenges' / 'templates'  # Django/Monthly_Challenges/challenges/templates
+            BASE_DIR / 'templates'  # Django/Monthly_Challenges/templates
         ],
         'APP_DIRS': True,
         'OPTIONS': {

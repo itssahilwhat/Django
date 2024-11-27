@@ -7,15 +7,15 @@ monthly_challenges = {
     "january": "Eat no meat for the entire month",
     "february": "Walk for at least 20 minutes every day",
     "march": "Learn Django for at least 20 minutes every day",
-    "april": "April challenge",
-    "may": "May challenge",
-    "june": "June challenge",
-    "july": "July challenge",
-    "august": "August challenge",
-    "september": "September challenge",
-    "october": "October challenge",
-    "november": "November challenge",
-    "december": "December challenge"
+    "april": 'Meditate for at least 20 minutes every day',
+    "may": "Learn new language for at least 20 minutes every day",
+    "june": "Eat no egg for the entire month",
+    "july": "No social media for the entire month",
+    "august": "No coffee for the entire month",
+    "september": "No sugar for the entire month",
+    "october": "No alcohol for the entire month",
+    "november": "No junk food for the entire month",
+    "december": "No TV for the entire month"
 }
 
 
@@ -39,14 +39,13 @@ def monthly_challenge_by_number(request, month):
         return HttpResponseNotFound('Invalid month')
 
     redirect_month = months[month - 1]
-    redirect_path = reverse("month-challenge", args=[redirect_month])  # /challenge/january
+    redirect_path = reverse("month-challenge", args=[redirect_month])  # /challenges/january
     return HttpResponseRedirect(redirect_path)
 
 
 def monthly_challenge(request, month):
     try:
         challenge_text = monthly_challenges[month]
-        response_data = f"<h1>{challenge_text}</h1>"
-        return HttpResponse(challenge_text)
+        return render(request, "challenges/challenge.html")
     except:
         return HttpResponseNotFound('<h1>This month is not supported!</h1>')

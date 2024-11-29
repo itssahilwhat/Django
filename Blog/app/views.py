@@ -7,7 +7,7 @@ def home(request):
 
 
 def posts(request):
-    pass
+    return render(request, "Blog/all-posts.html")
 
 
 def post(request, post_id):

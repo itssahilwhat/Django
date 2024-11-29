@@ -5,7 +5,7 @@
 All My Posts
 {% endblock %} 
 
-{% block css_files %}
+{% block css %}
   <link rel="stylesheet" href="{% static 'Blog/post.css' %}" />
   <link rel="stylesheet" href="{% static 'Blog/all-posts.css' %}" />
 {% endblock %}
@@ -15,12 +15,12 @@ All My Posts
   <h2>My Collected Posts</h2>
 
   <ul>
-    {% include "blog/includes/post.html" %}
-    {% include "blog/includes/post.html" %}
-    {% include "blog/includes/post.html" %}
-    {% include "blog/includes/post.html" %}
-    {% include "blog/includes/post.html" %}
-    {% include "blog/includes/post.html" %}
+    {% include "Blog/includes/post.html" %}
+    {% include "Blog/includes/post.html" %}
+    {% include "Blog/includes/post.html" %}
+    {% include "Blog/includes/post.html" %}
+    {% include "Blog/includes/post.html" %}
+    {% include "Blog/includes/post.html" %}
   </ul>
 </section>
 {% endblock %}

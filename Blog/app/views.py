@@ -7,8 +7,8 @@ def home(request):
 
 
 def posts(request):
-    return HttpResponse('<h1>Blog Posts</h1>')
+    pass
 
 
 def post(request, post_id):
-    return HttpResponse(f'<h1>Blog Post {post_id}</h1>')
+    pass

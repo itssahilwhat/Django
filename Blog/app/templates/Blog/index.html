@@ -22,7 +22,9 @@ My Blog
     <section id="latest-posts">
         <h2>My Latest Thoughts</h2>
         <ul>
-            {% include "Blog/includes/post.html" %}
+            {% for post in posts %}
+                {% include "Blog/includes/post.html" %}
+            {% endfor %}
         </ul>
     </section>
 

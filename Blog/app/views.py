@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from datetime import date
 
-posts = [
+all_posts = [
     {
         "slug": "hike-in-the-mountains",
         "image": "mountains.jpg",
@@ -68,12 +68,20 @@ posts = [
 ]
 
 def home(request):
-    return render(request, "Blog/index.html")
+    sorted_posts = sorted(all_posts, key=lambda post: post['date'])
+    latest_posts = sorted_posts[-3:]
+    return render(request, "Blog/index.html", {
+        "posts": latest_posts
+    })
 
 
 def posts(request):
-    return render(request, "Blog/all-posts.html")
+    return render(request, "Blog/all-posts.html", {
+        "all_posts": all_posts
+    })
 
 
 def post(request, slug):
-    return render(request, "Blog/post-detail.html")
+    return render(request, "Blog/post-detail.html", {
+        "post": next(post for post in all_posts if post['slug'] == slug)
+    })

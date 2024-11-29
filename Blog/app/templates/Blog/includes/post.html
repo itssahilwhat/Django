@@ -2,8 +2,8 @@
 
 <li>
     <article class="post">
-        <a href="">
-            <img src="{% static 'Blog/images/mountain.jpg' %}" alt="Mountain Hiking">
+        <a href="{% url 'blog-post' 'the-mountains' %}">
+            <img src="{% static 'Blog/images/mountains.jpg' %}" alt="Mountain Hiking">
             <div class="post_content">
                 <h3>Mountain Hiking</h3>
                 <p>Mountains are calling and I must go!</p>
